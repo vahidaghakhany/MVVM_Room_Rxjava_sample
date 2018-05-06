@@ -18,6 +18,6 @@ public class ExampleUnitTest {
     @Test
     public void formatPriceTest(){
         String str = Util.formatPrice("50000000000");
-        assertEquals("5000",str);
+        assertEquals("50,000,000,000",str);
     }
 }
