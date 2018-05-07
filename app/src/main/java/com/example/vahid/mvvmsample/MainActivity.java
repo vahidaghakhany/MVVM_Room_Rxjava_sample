@@ -106,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
         );
-
         disposable.add(viewModel.getAllUser()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
