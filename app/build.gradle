@@ -6,16 +6,27 @@ android {
         applicationId "com.example.vahid.mvvmsample"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode System.getenv("BUILD_NUMBER") as Integer ?: 0
+        versionName "1." + System.getenv("BUILD_NUMBER")
+        project.ext.set("archivesBaseName", "mvvmSample-" + versionName + "-" + versionCode)
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         lintOptions {
           abortOnError false
       }
     }
+
+    signingConfigs {
+        config
+    }
+
     buildTypes {
+        debug {
+            minifyEnabled true
+            shrinkResources true
+        }
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
